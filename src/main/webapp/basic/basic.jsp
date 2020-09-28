@@ -9,8 +9,9 @@
 </head>
 <body>
 	<%	// 스크립틀릿 : 자바 로직을 작성하는 공간이다.
+		// 특정 메서드 안에서 구현하는 자바로직
+			
 		Date date = new Date();
-	
 	%>
 	<!-- expression : 화면에 출력을 해준다. 
 		writer.print()와 동일하다.
