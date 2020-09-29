@@ -1,4 +1,3 @@
-D:\A_TeachingMaterial\6.JspSpring\workspace\jsp\deploy\deploy.sh
 
 cd /d/A_TeachingMaterial/6.JspSpring/deploy/jsp
 
