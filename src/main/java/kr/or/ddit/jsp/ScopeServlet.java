@@ -13,16 +13,26 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/scopeServlet")
 public class ScopeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+	// 화면 요청을 처리하는 메서드
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/jsp/scopeView.jsp").forward(req, resp);
+	}
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String param = request.getParameter("param");
+		
 		// request, session, application 객체에 각각 속성을 저장한다.
-		request.setAttribute("requestAttr", "requestValue");
+		request.setAttribute("requestAttr", param);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("sessionAttr", "sessionValue");
+		session.setAttribute("sessionAttr", param);
 		
 		ServletContext sc = getServletContext();
-		sc.setAttribute("applicationAttr", "applicationValue");
+		sc.setAttribute("applicationAttr", param);
 		
 		request.getRequestDispatcher("/jsp/scopeView.jsp").forward(request, response);
 		
