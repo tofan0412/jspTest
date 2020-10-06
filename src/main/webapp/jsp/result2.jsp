@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계산기</title>
+<title>곱셈 계산기</title>
 </head>
 <body>
-	<form method="POST" action="<%=request.getContextPath()%>/sumCalculration">
+	<form method="POST" action="<%=request.getContextPath()%>/multiplyCalculration">
 	<label>시작</label>
 	<input type="text" name="start"><br>
 	
