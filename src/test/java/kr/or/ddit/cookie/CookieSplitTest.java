@@ -28,4 +28,15 @@ public class CookieSplitTest {
 		assertEquals("T", test2);
 		assertEquals("", test3);
 	}
+	
+	@Test
+	public void FailTest() {
+		/***Given***/
+		CookieSplit cookieSplit = new CookieSplit();
+
+		/***When***/
+		String test1 = cookieSplit.getCookieValue("PASSWORD");
+		/***Then***/
+		assertEquals("", test1);
+	}
 }
