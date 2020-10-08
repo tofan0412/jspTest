@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.MemberServiceI;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -36,9 +40,32 @@ public class LoginServlet extends HttpServlet {
 					cookie.getName(), cookie.getValue());
 		}
 		
+		// 파라미터로 온 userId에 해당하는 비밀번호가 데이터베이스에 저장된 비밀번호와 
+		// 일치하는지 확인
+		
+		// 일치하는 경우 : main 페이지로 이동, 
+		// 일치하지 않을 경우 : login 페이지로 이동
+		
+		MemberServiceI memberService = new MemberService();
+		MemberVo memberVo = memberService.getMember(userId);
+		
+		//DB에 등록된 회원이 없거나 비밀번호가 틀린 경우 ( 로그인 페이지로 이동)
+		if (memberVo == null || !memberVo.getPassword().equals(password)) {
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
+		
+		// 비밀번호가 일치하는 경우 (메인 페이지로 이동)
+		else if(memberVo.getPassword().equals(password)) {
+			request.getSession().setAttribute("S_MEMBER", memberVo);
+			
+			request.getRequestDispatcher("/main.jsp").forward(request, response);
+		}
+		
+		/*
 		Cookie cookie = new Cookie("SERVERCOOKIE", "COOKIEVALUE");
 		cookie.setMaxAge(60*60*24);	// 쿠키의 수명 설정. 
 		// 서버에서 만든 쿠키를 response 객체에 담는다.
 		response.addCookie(cookie);
+		*/
 	}
 }
