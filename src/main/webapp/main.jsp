@@ -37,17 +37,17 @@
 						class="icon-bar"></span>
 				</button>
 				<%
-					MemberVo memberVo = (MemberVo)request.getSession().getAttribute("S_MEMBER");
+					MemberVo memberVo = new MemberVo();
+					memberVo = (MemberVo)request.getSession().getAttribute("S_MEMBER");
 				%>
 				<a class="navbar-brand" href="#">JSP/SPRING 
 					[
-					<% if (memberVo.getUserId() != null){
-						out.print(memberVo.getUserId());	
-					}else{
-						out.print("");
-					}
+					<%
+						if (memberVo != null){
+							out.print(memberVo.getUserId());
+						}
 					%>
-					]
+					 ]
 				</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
