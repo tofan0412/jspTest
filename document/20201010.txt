@@ -1,0 +1,25 @@
+DBMS 입장에서 동일한 SQL이란?
+모든 문자가 동일한 SQL이다.
+
+다음 SQL은 DBMS 입장에서 전혀 다른 SQL이다.
+
+SELECT * FROM MYMEMBER;
+SELECT * FROM  MYMEMBER; -- 공백 차이
+SELECt * FROM MYMEMBER;	-- 소문자 차이
+
+MemberDao 새로운 기능 추가 
+전체 사용자 조회
+1. 메서드. sql id 이름???	==> getMemberAll
+2. 해당 sql 실행할 때 파라미터가 필요한가 ?
+	SELECT *
+	  FROM MEMBER
+
+3. 해당 sql 실행했을 때 반환되는 타입은 어떠한 유형인가? MemberVo
+
+지금까지 배운 내용을 종합하여 실습
+left 메뉴에 jobs 클릭 시
+jobs 테이블에 저장된 모든 데이터를 table 태그를 이용하여 화면에 출력
+job_id, job_title
+servlet(controller), service(service), dao(repository), model, view
+
+MemberDao ==> 여기 사용 금지..
