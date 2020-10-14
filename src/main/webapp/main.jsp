@@ -1,7 +1,7 @@
 <%@page import="kr.or.ddit.member.model.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,73 +12,23 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-
 <title>Jsp</title>
-
-<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
-<script src="/js/jquery/jquery-1.12.4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<%@ include file="/layout/commonlib.jsp" %>
 </head>
 
 <body>
+<%@ include file="/layout/header.jsp" %>
 
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<%
-					MemberVo memberVo = new MemberVo();
-					memberVo = (MemberVo)request.getSession().getAttribute("S_MEMBER");
-				%>
-				<a class="navbar-brand" href="#">JSP/SPRING 
-					[
-					<%
-						if (memberVo != null){
-							out.print(memberVo.getUserid());
-						}
-					%>
-					 ]
-				</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</nav>
 	<div class="container-fluid">
 		<div class="row">
 
 			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
-					<li class="active"><a href="#">사용자</a></li>
-					<li class="active"><a href="<%=request.getContextPath()%>/getJobsAll">Jobs</a></li>
-				</ul>
+				<%@ include file="/layout/left.jsp" %>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-
 				<div class="blog-header">
 					<h1 class="blog-title">Main</h1>
-					<p class="lead blog-description">Jsp / Spring.</p>
 				</div>
 
 				<div class="row">
@@ -87,7 +37,7 @@
 
 						<div class="blog-post">
 							<h2 class="blog-post-title">JSP</h2>
-							<p class="blog-post-meta">2017.10.30, room 201</p>
+							<p class="blog-post-meta">2020.10.14, room 404</p>
 
 							<p>jsp를 통한 웹 프로그래밍 학습</p>
 							<hr>

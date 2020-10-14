@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>jsp</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/public.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css">
 </head>
 <body>
 	<%-- 자바언어의 철칙(자바는 굉장히 정적)

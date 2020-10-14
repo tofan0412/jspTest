@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		logger.debug("userId : {} , password : {}",userId, password);
+		
 		// 쿠키 정보
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies) {

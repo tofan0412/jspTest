@@ -7,7 +7,7 @@
 <title>계산기</title>
 </head>
 <body>
-	<form method="POST" action="<%=request.getContextPath()%>/sumCalculration">
+	<form method="POST" action="${pageContext.request.contextPath}/sumCalculration">
 	<label>시작</label>
 	<input type="text" name="start"><br>
 	
