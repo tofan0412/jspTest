@@ -1,6 +1,8 @@
 package kr.or.ddit.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -56,5 +58,14 @@ public class MemberDao implements MemberDaoI{
 		
 		return memlist;
 	}
-	
+
+	@Override
+	public List<MemberVo> getMemberPage(SqlSession sqlSession , Map<String, Integer> page) {
+		return sqlSession.selectList("member.getMemberPage", page);
+	}
+
+	@Override
+	public int selectMemberTotalCnt(SqlSession sqlSession) {
+		return sqlSession.selectOne("member.selectMemberTotalCnt");
+	}
 }
