@@ -1,0 +1,21 @@
+RequestCounterFilter
+LoginServlet
+
+// 전처리(요청이 서블릿으로 가기 전)
+chain.doFilter
+// 후처리(생성된 응답이 클라이언트에게 가는 중)
+
+전처리 ==> 서블릿 ==> 후처리
+
+logger.debug("RequestCounterFilter 전처리 부분 - chain.dofilter 호출 전");
+logger.debug("loginServlet doGet");
+logger.debug("RequestCounterFilter 후처리 부분 - chain.dofilter 호출 후");
+
+와 같은 순서로 logger가 출력되어야 한다.
+
+실제 출력 결과:
+RequestCounterFilter.doFilter()
+uri : /jsp/login
+RequestCounterFilter 전처리 부분 - chain.dofilter 호출 전
+LoginServlet - loginServlet doGet
+RequestCounterFilter 후처리 부분 - chain.dofilter 호출 후

@@ -8,11 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.ddit.member.model.MemberVo;
 
 public interface MemberDaoI {
-	MemberVo getMember(String userId);
+	MemberVo getMember(SqlSession sqlSession, String userId);
 	
-	List<MemberVo> getMemberAll();
+	List<MemberVo> getMemberAll(SqlSession sqlSession);
 	
-	List<MemberVo> getMemberPage(SqlSession sqlSession , Map<String, Integer> page);
+	List<MemberVo> getMemberPage(SqlSession sqlSession, Map<String, Integer> page);
 
 	int selectMemberTotalCnt(SqlSession sqlSession);
 }

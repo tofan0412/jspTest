@@ -34,8 +34,10 @@ public class MemberListServlet extends HttpServlet {
 		
 		request.setAttribute("page", pagenm);
 		request.setAttribute("pageSize", pageSize);
+		
 		// 필요한 페이지의 갯수
 		page.put("page", pagenm);
+		
 		// 한 페이지 당 출력할 글의 갯수
 		page.put("pageSize", pageSize);
 		

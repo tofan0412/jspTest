@@ -24,43 +24,19 @@ public class MemberDao implements MemberDaoI{
 	}
 	
 	@Override
-	public MemberVo getMember(String userId) {
-		// 원래는 DB에서 데이터를 조회하는 로직이 있어야 하나
-		// 우리는 controller 기능에 집중한다 -> 하드코딩을 통해 dao, service는 간략하게 넘어간다.
-		// Mock(가짜)
-		
-		/*
-		MemberVo memberVo = new MemberVo();
-		memberVo.setUserId("brown");
-		memberVo.setPassword("passbrown");
-		 */
-		
-		SqlSession sqlSession = MyBatisUtil.getSqlSession();
-		
-		//select
-		// 한 건 : selectOne
-		// 여러 건 : selectList
-		
+	public MemberVo getMember(SqlSession sqlSession , String userId) {
 		MemberVo memberVo = sqlSession.selectOne("member.getMember", userId);
-		sqlSession.close();
-		
-		
 		return memberVo;
-		
 	}
 
 	@Override
-	public List<MemberVo> getMemberAll() {
-		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+	public List<MemberVo> getMemberAll(SqlSession sqlSession) {
 		List<MemberVo> memlist = sqlSession.selectList("member.getMemberAll");
-		
-		sqlSession.close();
-		
 		return memlist;
 	}
 
 	@Override
-	public List<MemberVo> getMemberPage(SqlSession sqlSession , Map<String, Integer> page) {
+	public List<MemberVo> getMemberPage(SqlSession sqlSession, Map<String, Integer> page) {
 		return sqlSession.selectList("member.getMemberPage", page);
 	}
 

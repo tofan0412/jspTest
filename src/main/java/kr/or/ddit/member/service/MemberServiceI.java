@@ -13,5 +13,4 @@ public interface MemberServiceI {
 	List<MemberVo> getMemberAll();
 	
 	Map<String, Object> getMemberPage(Map<String, Integer> page);
-	
 }

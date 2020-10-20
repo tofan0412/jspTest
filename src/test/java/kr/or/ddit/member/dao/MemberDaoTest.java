@@ -19,13 +19,13 @@ public class MemberDaoTest {
 		/***Given***/
 		MemberDao dao = new MemberDao();
 		String userId = "brown";
-		
 		MemberVo answerMemberVo = new MemberVo();
 		answerMemberVo.setUserid("brown");
 		answerMemberVo.setPass("brownPass");
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 		
 		/***When***/
-		MemberVo mv = dao.getMember(userId);
+		MemberVo mv = dao.getMember(sqlSession, userId);
 		/***Then***/
 //		assertEquals("brown", mv.getUserId());
 //		assertEquals("passbrown", mv.getPassword());
@@ -37,9 +37,9 @@ public class MemberDaoTest {
 	public void getMemberAllTest() {
 		/***Given***/
 		MemberDao dao = new MemberDao();
-
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 		/***When***/
-		List<MemberVo> memlist = dao.getMemberAll();
+		List<MemberVo> memlist = dao.getMemberAll(sqlSession);
 		
 		/***Then***/
 		assertEquals(15, memlist.size());

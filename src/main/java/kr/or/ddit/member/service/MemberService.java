@@ -21,12 +21,19 @@ public class MemberService implements MemberServiceI {
 	
 	@Override
 	public MemberVo getMember(String userId) {
-		return memberDao.getMember(userId);
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		MemberVo member = memberDao.getMember(sqlSession , userId);
+		sqlSession.close();
+		return member;
 	}
 
 	@Override
 	public List<MemberVo> getMemberAll() {
-		return memberDao.getMemberAll();
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		
+		List<MemberVo> memList = memberDao.getMemberAll(sqlSession);
+		sqlSession.close();
+		return memList;
 	}
 
 	@Override
