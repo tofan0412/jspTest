@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 		// 비밀번호가 일치하는 경우 (메인 페이지로 이동)
 		else if(memberVo.getPass().equals(password)) {
 			request.getSession().setAttribute("S_MEMBER", memberVo);
-			
+			// request.getSession().invalidate(); // Session에 있는 속성을 모두 제거하겠다는 뜻이다.
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}
 		

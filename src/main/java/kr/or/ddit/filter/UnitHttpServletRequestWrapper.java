@@ -56,6 +56,4 @@ public class UnitHttpServletRequestWrapper extends HttpServletRequestWrapper{
 			parameterMap.put("UNT_CD", new String[] {"DDIT"});
 		}
 	}
-	
-	
 }
