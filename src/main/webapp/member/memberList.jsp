@@ -15,6 +15,14 @@
 <link rel="icon" href="../../favicon.ico">
 <title>Jsp</title>
 <%@ include file="/layout/commonlib.jsp"%>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#memberList tr').on('click', function(){
+		var userid = $(this).data("userid");
+		document.location = "/member?userid=" + userid;
+	});
+});
+</script>
 </head>
 
 <body>
@@ -38,14 +46,16 @@
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
+								<tbody id="memberList">
 								<c:forEach items="${memList}" var="member">
-									<tr>
+									<tr data-userid="${member.userid }">
 										<td>${member.userid }</td>
 										<td>${member.usernm }</td>
 										<td>${member.alias }</td>
 										<td>${member.reg_dt }</td>
 									</tr>
 								</c:forEach>
+								</tbody>
 							</table>
 						</div>
 
