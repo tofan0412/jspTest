@@ -24,4 +24,30 @@ public class FileUploadUtil {
 		}
 		return filename;
 	}
+	
+	//filename : sally.png => png
+	public static String getExtension(String filename) {
+//		String extension = "null";
+//		
+//		if (extension.equals("null")) {
+//			extension = filename.valueOf(".jpg");
+//		}
+//		if (extension.equals("null")) {
+//			extension = filename.valueOf(".jpeg");
+//		}
+//		if (extension.equals("null")) {
+//			extension = filename.valueOf(".png");
+//		}
+//		return extension;
+		
+		if(filename == null || filename.indexOf(".") == -1) {
+			return "";
+		}else {
+			return filename.split("\\.")[1];
+		}
+	}
+	
+	
+	
+	
 }

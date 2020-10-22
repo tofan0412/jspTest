@@ -53,5 +53,34 @@ public class MemberService implements MemberServiceI {
 		return map;
 	}
 
+	@Override
+	public int insertMember(MemberVo memberVo) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		int insertCnt = memberDao.insertMember(sqlSession, memberVo);
+		
+		sqlSession.close();
+		return insertCnt;
+	}
+
+	@Override
+	public int deleteMember(String userid) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		int deleteCnt = memberDao.deleteMember(sqlSession, userid);
+		
+		sqlSession.close();
+		return deleteCnt;
+	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		int updateCnt = memberDao.updateMember(sqlSession, memberVo);
+		
+		sqlSession.close();
+		return updateCnt;
+	}
+	
+	
+
 
 }

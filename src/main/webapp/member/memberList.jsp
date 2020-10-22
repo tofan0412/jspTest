@@ -59,7 +59,7 @@ $(document).ready(function(){
 							</table>
 						</div>
 
-						<a class="btn btn-default pull-right">사용자 등록</a>
+						<a href="${cp }/memberRegist" class="btn btn-default pull-right">사용자 등록</a>
 						<div class="text-center">
 							<ul class="pagination">
 							<!-- 필요한 페이지의 갯수에 맞춰 자동으로 생성.. -->

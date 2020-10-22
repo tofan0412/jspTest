@@ -15,7 +15,17 @@
 <title>Jsp</title>
 
 <%@include file="/layout/commonlib.jsp"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#modBtn').on('click', function(){
+		var userid = $('#label_userid').data("userid");
+		$(location).attr('href', '/memberUpdate?userid='+userid);
+	});
+})
 
+</script>
 </head>
 
 <body>
@@ -42,14 +52,14 @@
 						<div class="col-sm-10">
                         <%--<img src="${cp }/profile/${memberVo.filename}"/> --%>
 							<!-- Servlet을 통해 파일 업로드하기.. -->
-							<img src="${cp }/profileImg?userid=${memberVo.userid}"/>
+						<img src="${cp }/profileImg?userid=${memberVo.userid}"/>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.userid }</label>
+							<label id="label_userid" data-userid="${memberVo.userid }" class="control-label">${memberVo.userid }</label>
 						</div>
 					</div>
 
@@ -96,17 +106,11 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">수정</button>
+							<button id="modBtn" type="button" class="btn btn-default">수정</button>
 						</div>
 					</div>
-					
-					<!-- 이미지 파일을 서블릿으로 요청할 수도 있다. -->
-<%-- 					<img src="${cp }/memberImg?userid=brown"/> --%>
-					
-					
 				</form>
 			</div>
 		</div>
