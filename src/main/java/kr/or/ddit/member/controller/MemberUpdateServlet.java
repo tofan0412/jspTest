@@ -20,9 +20,6 @@ import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
 
-/**
- * Servlet implementation class MemberUpdate
- */
 @WebServlet("/memberUpdate")
 @MultipartConfig
 public class MemberUpdateServlet extends HttpServlet {
@@ -46,7 +43,6 @@ public class MemberUpdateServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		
 		String userid = request.getParameter("userid");
@@ -61,16 +57,28 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		Part profile = request.getPart("realFilename");
 		
-		logger.debug("file : {}", profile.getHeader("Content-Disposition"));
-		String realFileName = FileUploadUtil.getFilename(profile.getHeader("Content-Disposition"));
-		String fileName = UUID.randomUUID().toString();
-		
+		String realFileName = "";
+		String fileName = "";
 		String filePath = "";
-		if (profile.getSize() > 0) {
-			// 확장자는 어떻게 추출하는가?
-			String extension = FileUploadUtil.getExtension(realFileName);
-			filePath = "D:\\profile\\" + fileName+ "." + extension;
-			profile.write(filePath);
+		
+		logger.debug("file : {}", profile.getHeader("Content-Disposition"));
+		realFileName = FileUploadUtil.getFilename(profile.getHeader("Content-Disposition"));
+		fileName = UUID.randomUUID().toString();
+		
+		logger.debug("realFileName : {} / fileName : {} ",realFileName, fileName);
+		// 사용자가 사진을 변경하지 않았을 경우..
+		if (realFileName.length() < 1) {
+			filePath = request.getParameter("filename");  
+			realFileName = request.getParameter("realFilename");
+		
+		// 사용자가 사진을 변경한 경우 ...
+		}else {
+			if (profile.getSize() > 0) {
+				// 확장자는 어떻게 추출하는가?
+				String extension = FileUploadUtil.getExtension(realFileName);
+				filePath = "D:\\profile\\" + fileName+ "." + extension;
+				profile.write(filePath);
+			}
 		}
 		
 		MemberVo memberVo = new MemberVo(userid, pass, usernm, alias, addr1, addr2, zipcode, filePath, realFileName);

@@ -29,10 +29,6 @@ $(function(){
 		}).open();
 	});
 })
-
-
-
-
 </script>
 
 <%@include file="/layout/commonlib.jsp"%>

@@ -23,6 +23,12 @@ $(function(){
 		var userid = $('#label_userid').data("userid");
 		$(location).attr('href', '/memberUpdate?userid='+userid);
 	});
+
+	$("#profileDownBtn").on('click', function(){
+		var userid = $('#label_userid').data("userid");
+		$(location).attr('href', '/profileDownload?userid='+ userid);
+	})
+	
 })
 
 </script>
@@ -52,7 +58,9 @@ $(function(){
 						<div class="col-sm-10">
                         <%--<img src="${cp }/profile/${memberVo.filename}"/> --%>
 							<!-- Servlet을 통해 파일 업로드하기.. -->
-						<img src="${cp }/profileImg?userid=${memberVo.userid}"/>
+						<img src="${cp }/profileImg?userid=${memberVo.userid}"/><br>
+						<button id="profileDownBtn"
+								type="button" class="btn btn-default">다운로드 : ${memberVo.realFilename }</button>
 						</div>
 					</div>
 					
